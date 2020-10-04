@@ -1,0 +1,793 @@
+{
+  "intents": [
+    {
+      "intent": "admission",
+      "examples": [
+        {
+          "text": "How admission is done in your college?"
+        },
+        {
+          "text": "i want to take admission in your college"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "btech",
+      "examples": [
+        {
+          "text": "trades available"
+        },
+        {
+          "text": "Which branches are available"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "courses",
+      "examples": [
+        {
+          "text": "how many courses do you have"
+        },
+        {
+          "text": "what are the courses available?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "enquiry",
+      "examples": [
+        {
+          "text": "i want to enquiry about courses"
+        },
+        {
+          "text": "i want to know the courses available"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "greetings",
+      "examples": [
+        {
+          "text": "good afternoon"
+        },
+        {
+          "text": "good evening"
+        },
+        {
+          "text": "good morning"
+        },
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "thank you"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "admission",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "admission",
+          "synonyms": [
+            "admissions",
+            "entry"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "admitted",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "btech",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "civil",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "cse",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "me",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "courses",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "bba",
+          "synonyms": [
+            "bba course"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bca",
+          "synonyms": [
+            "bca course"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bcom",
+          "synonyms": [
+            "bcom course"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "btech",
+          "synonyms": [
+            "btech course"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "email",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "email",
+          "patterns": [
+            "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "enquiry",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "branches",
+          "synonyms": [
+            "branch",
+            "trade"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "btech",
+          "synonyms": [
+            "B.TECH",
+            "B.TECH."
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "courses",
+          "synonyms": [
+            "course"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "good afternoon",
+          "synonyms": [
+            "ga",
+            "gud aftrn"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good evening",
+          "synonyms": [
+            "ge",
+            "gud evng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "good morning",
+          "synonyms": [
+            "gm",
+            "gud mrng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "hi",
+          "synonyms": [
+            "hello"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "thank you",
+          "synonyms": [
+            "thnks",
+            "thnku",
+            "thnx"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_6_1601822545006",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1601662462646",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1601662462689",
+      "previous_sibling": "handler_4_1601662462689"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_5_1601662462646",
+      "event_name": "input",
+      "dialog_node": "handler_4_1601662462689"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1601820511720",
+      "context": {
+        "btech_cse": "@btech:cse"
+      },
+      "conditions": "@btech:cse",
+      "event_name": "input",
+      "dialog_node": "handler_4_1601820511773"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Fees of Cse is 30000 per sem"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1601820511720",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1601820511773",
+      "previous_sibling": "handler_4_1601820511773"
+    },
+    {
+      "type": "standard",
+      "title": "enquiry",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#enquiry || @enquiry",
+      "dialog_node": "node_1_1601662137862",
+      "previous_sibling": "node_6_1601653066564"
+    },
+    {
+      "type": "standard",
+      "title": "greetings",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#greetings || @greetings",
+      "dialog_node": "node_2_1601821868793",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "btech",
+      "parent": "node_1_1601662137862",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@btech",
+      "dialog_node": "node_4_1601820418171"
+    },
+    {
+      "type": "standard",
+      "title": "admission",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you for your interest. May I know which course you are interested in?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#admission || @admission",
+      "dialog_node": "node_6_1601653066564",
+      "previous_sibling": "node_2_1601821868793"
+    },
+    {
+      "type": "standard",
+      "title": "courses",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@courses",
+      "dialog_node": "node_6_1601822545006",
+      "previous_sibling": "node_1_1601662137862"
+    },
+    {
+      "type": "standard",
+      "title": "email",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you. Your name and email ID $email is saved with us for further references. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "context": {
+        "email": "@email.literal"
+      },
+      "conditions": "@email",
+      "dialog_node": "node_7_1601655363025"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "this course is of 3 years and fees is 13000/- per sem."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601822545006",
+      "conditions": "@courses:bcom",
+      "dialog_node": "response_10_1601822567824"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "good afternoon"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1601821868793",
+      "conditions": "@greetings:(good afternoon)",
+      "dialog_node": "response_10_1601835863777",
+      "previous_sibling": "response_5_1601835838901"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "courses",
+            "options": [
+              {
+                "label": "BBA",
+                "value": {
+                  "input": {
+                    "text": "BBA"
+                  }
+                }
+              },
+              {
+                "label": "BCA",
+                "value": {
+                  "input": {
+                    "text": "BCA"
+                  }
+                }
+              },
+              {
+                "label": "BCOM",
+                "value": {
+                  "input": {
+                    "text": "BCOM"
+                  }
+                }
+              },
+              {
+                "label": "BTECH",
+                "value": {
+                  "input": {
+                    "text": "BTECH"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1601662137862",
+      "context": {},
+      "conditions": "@enquiry:courses",
+      "dialog_node": "response_1_1601662474484",
+      "previous_sibling": "node_4_1601820418171"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "good morning"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1601821868793",
+      "conditions": "@greetings:(good morning)",
+      "dialog_node": "response_1_1601821910444"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "this course is of 3 years and fees is 19000/- per sem."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601822545006",
+      "conditions": "@courses:bca",
+      "dialog_node": "response_1_1601822639924",
+      "previous_sibling": "response_5_1601822611401"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "fees of cse is 30000/- per sem"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601820418171",
+      "conditions": "@btech:cse",
+      "dialog_node": "response_3_1601820721164"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "this course is of 3 years and fees is 20000/- per sem."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601822545006",
+      "conditions": "@courses:bba",
+      "dialog_node": "response_5_1601822611401",
+      "previous_sibling": "response_10_1601822567824"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "hello"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1601821868793",
+      "conditions": "@greetings:hi",
+      "dialog_node": "response_5_1601835838901",
+      "previous_sibling": "response_1_1601821910444"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "fees of me is 40000/- per sem"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601820418171",
+      "conditions": "@btech:me",
+      "dialog_node": "response_6_1601820806161",
+      "previous_sibling": "response_3_1601820721164"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "fees of civil is 40000/- per sem"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1601820418171",
+      "conditions": "@btech:civil",
+      "dialog_node": "response_6_1601820830556",
+      "previous_sibling": "response_6_1601820806161"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "ME",
+                "value": {
+                  "input": {
+                    "text": "ME"
+                  }
+                }
+              },
+              {
+                "label": "CSE",
+                "value": {
+                  "input": {
+                    "text": "CSE"
+                  }
+                }
+              },
+              {
+                "label": "CIVIL",
+                "value": {
+                  "input": {
+                    "text": "CIVIL"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_1_1601662137862",
+      "conditions": "@enquiry:branches",
+      "dialog_node": "response_7_1601662614840",
+      "previous_sibling": "response_1_1601662474484"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please tell me which branch of B.Tech. you are interested in?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1601662137862",
+      "conditions": "@enquiry:btech",
+      "dialog_node": "response_8_1601821579952",
+      "previous_sibling": "response_7_1601662614840"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "od evening"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1601821868793",
+      "conditions": "@greetings:(good evening)",
+      "dialog_node": "response_8_1601835895198",
+      "previous_sibling": "response_10_1601835863777"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "That's my pleasure to help you."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1601821868793",
+      "conditions": "@greetings:(thank you)",
+      "dialog_node": "response_8_1601835910914",
+      "previous_sibling": "response_8_1601835895198"
+    },
+    {
+      "type": "slot",
+      "parent": "node_1_1601662137862",
+      "dialog_node": "slot_5_1601662462646",
+      "previous_sibling": "response_8_1601821579952"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1601820418171",
+      "variable": "$btech_cse",
+      "dialog_node": "slot_7_1601820511720",
+      "previous_sibling": "response_6_1601820830556"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Welcome to ABC Group of Instittutions. I am here to help you. May I know you Name and Email ID first?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "Welcome",
+      "digress_out": "allow_all"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "College Bot",
+  "language": "en",
+  "description": ""
+}
